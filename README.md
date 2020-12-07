@@ -26,6 +26,9 @@ Deploy ARM template
 az deployment group create --resource-group serverless-todo-app --template-file AzureDeploy/azuredeploy.json --parameters AzureDeploy/azuredeploy.parameters.json
 ```
 
+### Deploy function to Azure
+
+
 ### Cleanup resources
 ```
 az group delete --name serverless-todo-app
