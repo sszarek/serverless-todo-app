@@ -89,6 +89,22 @@
                 "Application_Type": "web",
                 "ApplicationId": "[variables('appInsightsName')]"
             }
+    },
+    {
+        "type": "Microsoft.DocumentDB/databaseAccounts/apis/databases",
+        "name": "[concat('account-name', '/sql/', 'database-name')]",
+        "apiVersion": "2016-03-31",
+        "dependsOn": [
+            "resourceId('Microsoft.DocumentDB/databaseAccounts/', 'account-name')]"
+        ],
+        "properties": {
+            "resource": {
+                "id": "database-name"
+            },
+            "options": {
+                "throughput": 400
+            }
+        }
     }],
     "outputs": {}
 }
