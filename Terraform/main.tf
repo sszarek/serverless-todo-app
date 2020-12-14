@@ -17,8 +17,8 @@ module "naming" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name = "serverless-todo-app"
-  location = "centralus"
+  name = var.app_name
+  location = var.azure_region
 }
 
 resource "azurerm_storage_account" "sa" {
@@ -28,7 +28,7 @@ resource "azurerm_storage_account" "sa" {
   account_tier = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = "development"
+    environment = var.environment
   }
 }
 
@@ -42,7 +42,7 @@ resource "azurerm_app_service_plan" "sp" {
     size = "Y1"
   }
   tags = {
-    environment = "development"
+    environment = var.environment
   }
 }
 
@@ -54,8 +54,8 @@ resource "azurerm_function_app" "afa" {
   storage_account_name = azurerm_storage_account.sa.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
   os_type = "linux"
-  version = "~2"
+  version = "~3"
   tags = {
-    environment = "development"
+    environment = var.environment
   }
 }
