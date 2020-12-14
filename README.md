@@ -1,5 +1,8 @@
 # serverless-todo-app
 
+## Install dependencies
+Install [Azure Function Core Tools](https://github.com/Azure/azure-functions-core-tools).
+
 ## Prepare Azure infrastructure
 ### Login to Azure
 ```
