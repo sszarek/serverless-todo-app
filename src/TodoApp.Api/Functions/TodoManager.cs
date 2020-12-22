@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace TodoApp.Api
+namespace TodoApp.Api.Functions
 {
-    public static class TodoManager
+    public class TodoManager
     {
         [FunctionName("TodoManager")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "todo")] HttpRequest req,
             ILogger log)
         {

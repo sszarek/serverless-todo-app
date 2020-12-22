@@ -4,14 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using TodoApp.Api.Functions;
 
-namespace TodoApp.Api.Tests
+namespace TodoApp.Api.Tests.Functions
 {
     public class TodoManagerTests
     {
+        private TodoManager _todoManager;
+
         [SetUp]
         public void Setup()
         {
+            _todoManager = new TodoManager();
         }
 
         [Test]
@@ -24,7 +28,7 @@ namespace TodoApp.Api.Tests
             var loggerMock = new Mock<ILogger>();
 
             // Act
-            var response = (OkObjectResult) await TodoManager.Run(request, loggerMock.Object);
+            var response = (OkObjectResult) await _todoManager.Run(request, loggerMock.Object);
 
             // Assert
             Assert.AreEqual(response.Value, "Hello");
